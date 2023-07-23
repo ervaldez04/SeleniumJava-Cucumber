@@ -30,26 +30,28 @@ public class handleAlert {
         driver.findElement(By.xpath("//button[@id='alertButton']")).click();
         Alert alert1 = driver.switchTo().alert();
         String alert1Message = alert1.getText();
-        System.out.println(alert1Message);
+        System.out.println("Alert Message 1: " + alert1Message);
         alert1.accept();
         driver.switchTo().defaultContent();
 
         //Handle Alert 2
+        driver.navigate().refresh();
         driver.findElement(By.xpath("//button[@id='timerAlertButton']")).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.alertIsPresent());
         Alert alert2 = driver.switchTo().alert();
         String alert2Message = alert1.getText();
-        System.out.println(alert2Message);
+        System.out.println("Alert Message 2: " + alert2Message);
         alert2.accept();
         driver.switchTo().defaultContent();
 
         //Handle Alert 3
+        driver.navigate().refresh();
         WebElement button = driver.findElement(By.xpath("//button[@id='confirmButton']"));
         button.click();
         Alert alert3 = driver.switchTo().alert();
         String alert3Message = alert1.getText();
-        System.out.println(alert3Message);
+        System.out.println("Alert Message 3: " + alert3Message);
         alert3.dismiss();
         driver.switchTo().defaultContent();
         String message = driver.findElement(By.xpath("//span[@id='confirmResult']")).getText();
@@ -62,6 +64,7 @@ public class handleAlert {
         Assert.assertTrue(message.contains("Ok"));
 
         //Handle Alert 4
+        driver.navigate().refresh();
         driver.findElement(By.xpath("//button[@id='promtButton']")).click();
         Alert alert4 = driver.switchTo().alert();
         String text = "test";

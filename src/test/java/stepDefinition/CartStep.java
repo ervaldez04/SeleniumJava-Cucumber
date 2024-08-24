@@ -16,10 +16,10 @@ import java.time.Duration;
 
 public class CartStep {
 
-    private WebDriver driver;
+    WebDriver driver;
 
-    @Given("User is login to site")
-    public void user_is_login_to_site() {
+    @Given("User is in site")
+    public void user_is_in_site() {
         WebDriverManager.chromedriver().setup();
         // System.setProperty("webdriver.chrome.driver", "/Users/evaldez/Documents/driver/chromedriver_mac_arm64/chromedriver");
         ChromeOptions options = new ChromeOptions();
@@ -35,8 +35,8 @@ public class CartStep {
 
     @When("User adds {string}")
     public void user_adds(String item) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='title']")));
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='title']")));
         driver.findElement(By.xpath("//div[@class='inventory_item']//div[contains(text(),'" + item + "')]//..//..//..//button[contains(@class,'btn_inventory')]")).click();
 
     }

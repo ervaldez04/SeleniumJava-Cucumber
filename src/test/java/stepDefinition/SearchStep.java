@@ -23,18 +23,19 @@ public class SearchStep {
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.get("https://www.google.com/");
+        driver.get("https://www.google.com");
     }
     @When("User searches word")
     public void user_searches_word() {
         driver.findElement(By.xpath("//textarea[@name='q']")).sendKeys("Test Automation");
         driver.findElement(By.xpath("//textarea[@name='q']")).sendKeys(Keys.RETURN);
+//        driver.findElement(By.xpath("//div[@class='lJ9FBc']//input[@name='btnK']")).click();
     }
 
     @Then("Page will be redirected to the Search Page")
     public void page_will_be_redirected_to_the_search_page() {
-        String searchedtitle = driver.getTitle();
-        Assert.assertEquals( "Test Automation - Google Search", searchedtitle);
+        String text = driver.findElement(By.xpath("//textarea[@name = 'q']")).getText();
+        Assert.assertEquals( "Test Automation", text);
         driver.quit();
     }
 

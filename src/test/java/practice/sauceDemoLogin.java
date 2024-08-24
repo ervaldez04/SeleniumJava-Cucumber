@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import java.lang.Thread;
+import java.time.Duration;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -16,16 +17,15 @@ public class sauceDemoLogin {
         // FOR MAC
         // System.setProperty("webdriver.chrome.driver", "/Users/evaldez/Documents/driver/chromedriver_mac_arm64/chromedriver");
         // FOR WINDOWS
-        // System.setProperty("webdriver.chrome.driver", "\\User\\evaldez\\Documents\\driver\\chromedriver_mac_arm64\\chromedriver.exe");
-        //ChromeOptions if version of Chrome is v111
+        // System.setProperty("webdriver.chrome.driver", "C:\\User\\evaldez\\Documents\\driver\\chromedriver_mac_arm64\\chromedriver.exe");
+        // ChromeOptions if version of Chrome is v111
         // ChromeOptions options = new ChromeOptions();
         // options.addArguments("--remote-allow-origins=*");
         // driver = new ChromeDriver(options);
         // For Chrome v115 and up
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        // just added sleep for demo purpose
-        Thread.sleep(200);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.xpath("//*[@id='user-name']")).sendKeys("standard_user");

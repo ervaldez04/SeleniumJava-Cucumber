@@ -24,7 +24,10 @@ public class sauceDemoLogin {
         // driver = new ChromeDriver(options);
         // For Chrome v115 and up
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");   //want headless browser run
+        driver = new ChromeDriver(options);
+       //  driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");

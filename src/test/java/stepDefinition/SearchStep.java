@@ -21,6 +21,7 @@ public class SearchStep {
         //System.setProperty("webdriver.chrome.driver", "/Users/evaldez/Documents/driver/chromedriver_mac_arm64/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("headless");   //want headless browser run
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://www.google.com");
